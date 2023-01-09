@@ -1,0 +1,23 @@
+:root{
+  --lilas: #c2c2d6;
+  --vermelho: #ac3939;
+  --azul: #004466;
+  --azulEscuro: #131350;
+  --laranja: #ffa500;
+  --cinzaClarissimo: #aaaaaa;
+  --cinzaClaro: #666666;
+  --cinzaEscuro: #4d4d4d;
+  --preto: #000000;
+  --branco: #ffffff;
+}
+
+*{
+  font-family: 'Barlow Condensed', sans-serif;
+}
+
+body{
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  background-color: var(--lilas);
+}
