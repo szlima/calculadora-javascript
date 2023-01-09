@@ -21,3 +21,34 @@ body{
   margin: 0;
   background-color: var(--lilas);
 }
+
+#root{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#calculadora{
+  background-color: var(--preto);
+  color: var(--branco);
+  width: 300px;
+  padding: 5px;
+  border: 2px solid var(--cinzaEscuro);
+}
+
+footer{
+  color: var(--cinzaEscuro);
+  text-align: center;
+}
+
+footer p{
+  margin: 20px 0 5px 0;
+}
+
+a{
+  color: var(--azulEscuro);
+  text-decoration: none;  
+}
