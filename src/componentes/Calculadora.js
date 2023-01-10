@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Display from './Display';
+import Botoes from './Botoes';
 
 function Calculadora(){
   
@@ -8,6 +9,7 @@ function Calculadora(){
         <React.Fragment>
             <div id='calculadora'>
                 <Display />
+                <Botoes />
             </div>
         
             <footer>

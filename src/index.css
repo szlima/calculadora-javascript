@@ -71,3 +71,106 @@ a{
 #display{
   font-size: 1.9rem;
 }
+
+#botoes{
+  display: grid;
+  gap: 1px;
+  grid-template-areas: 
+    'clear clear divide multiply'
+    'seven eight nine subtract'
+    'four five six add'
+    'one two three equals'
+    'zero zero decimal equals';
+}
+
+button{
+  color: var(--branco);
+  min-height: 70px;
+  min-width: 70px;
+  border: 0;
+  font-size: 1.5rem;
+}
+
+button:hover{
+  color: var(--preto);
+  border: 1px solid var(--cinzaClarissimo);
+  cursor:pointer;
+}
+
+.numerico{
+  background-color: var(--cinzaEscuro);
+}
+
+.operacao{
+  background-color: var(--cinzaClaro);
+}
+
+#clear{
+  grid-area: clear;
+  background-color: var(--vermelho);
+}
+
+#divide{
+  grid-area: divide;
+}
+
+#multiply{
+  grid-area: multiply;
+}
+
+#seven{
+  grid-area: seven;
+}
+
+#eight{
+  grid-area: eight;
+}
+
+#nine{
+  grid-area: nine;
+}
+
+#subtract{
+  grid-area: subtract;
+}
+
+#four{
+  grid-area: four;
+}
+
+#five{
+  grid-area: five;
+}
+
+#six{
+  grid-area: six;
+}
+
+#add{
+  grid-area: add;
+}
+
+#one{
+  grid-area: one;
+}
+
+#two{
+  grid-area: two;
+}
+
+#three{
+  grid-area: three;
+}
+
+#equals{
+  grid-area: equals;
+  background-color: var(--azul);
+}
+
+#zero{
+  grid-area: zero;
+}
+
+#decimal{
+  grid-area: decimal;
+}
