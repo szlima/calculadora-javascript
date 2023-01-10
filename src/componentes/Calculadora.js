@@ -1,11 +1,13 @@
 import React from 'react';
 
+import Display from './Display';
+
 function Calculadora(){
   
     return (
         <React.Fragment>
             <div id='calculadora'>
-                <h1>Calculadora</h1>
+                <Display />
             </div>
         
             <footer>

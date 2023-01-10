@@ -52,3 +52,22 @@ a{
   color: var(--azulEscuro);
   text-decoration: none;  
 }
+
+#big-display{
+  word-wrap: break-word;
+}
+
+.sub-display{
+  margin: 0;
+  min-height: 20px;
+  text-align: right;
+}
+
+#acumulado{
+  color: var(--laranja);
+  font-size: 1.3rem;
+}
+
+#display{
+  font-size: 1.9rem;
+}
