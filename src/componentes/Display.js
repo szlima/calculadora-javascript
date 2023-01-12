@@ -1,6 +1,7 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
-function Display({acumulado='', atual='0'}){ 
+function Display({acumulado, atual}){ 
 
     return (
         <div id='big-display'>
@@ -13,6 +14,11 @@ function Display({acumulado='', atual='0'}){
         </div>
     );
 }
+
+const mapStateToProps= state => ({
+    acumulado: state.calculadoraReducer.acumulado,
+    atual: state.calculadoraReducer.atual
+});
   
-export default Display;
+export default connect(mapStateToProps)(Display);
   
