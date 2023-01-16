@@ -2,14 +2,9 @@ import {
     CLICAR_NUMERICO
 } from '../actions/actionTypes';
 
-import {
-    clicarNumerico
-} from '../funcoes';
-
-
 const estadoInicial= {
-    acumulado: '', 
-    atual: '0'
+    atual: '0',
+    acumulado: ''    
 };
 
 export default function calculadoraReducer(state=estadoInicial, action){
@@ -19,7 +14,8 @@ export default function calculadoraReducer(state=estadoInicial, action){
         case CLICAR_NUMERICO:
             return {
                 ...state,
-                ...clicarNumerico(action.payload.elemento, state)
+                atual: action.payload.atual,
+                acumulado: action.payload.acumulado
             };
 
         default:

@@ -1,11 +1,11 @@
-export const clicarNumerico= (elemento, state) => {
+export const funcaoClicarNumerico= (elemento, {atual, acumulado}) => {
     
-    let atual= state.acumulado === '' ? '' : state.atual,
-        acumulado= state.acumulado;
+    let _atual= acumulado === '' ? '' : atual,
+        _acumulado= acumulado;
     
-    atual+= elemento;
-    acumulado+= elemento;
+    _atual+= elemento;
+    _acumulado+= elemento;
     
-    return {atual, acumulado};
+    return {atual: _atual, acumulado: _acumulado};
 };
   
