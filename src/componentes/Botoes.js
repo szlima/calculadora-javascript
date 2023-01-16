@@ -26,7 +26,7 @@ function Botoes({clicarNumerico}){
             <button id='three' className='numerico' onClick={() => clicarNumerico('3')}>3</button>
             
             <button id='zero' className='numerico' onClick={() => clicarNumerico('0')}>0</button>
-            <button id='decimal' className='numerico'>.</button>      
+            <button id='decimal' className='numerico' onClick={() => clicarNumerico('.')}>.</button>      
             <button id='equals'>=</button>
         
         </div>

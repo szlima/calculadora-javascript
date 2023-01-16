@@ -1,11 +1,13 @@
 import {
-    CLICAR_CLEAR, CLICAR_NUMERICO, 
-    CLICAR_OPERACAO, CLICAR_RESULTADO
+    CLICAR_CLEAR, CLICAR_NUMERICO, CLICAR_OPERACAO, 
+    CLICAR_RESULTADO, EXIBIR_OVERFLOW, ESCONDER_OVERFLOW
 } from './actionTypes';
 
 import {
     funcaoClicarNumerico
 } from '../funcoes';
+
+const MSG_OVERFLOW= 'DIGIT LIMIT MET';
 
 export const clicarClearAction= () => ({
     type: CLICAR_CLEAR
@@ -19,10 +21,35 @@ const clicarNumerico= (atual, acumulado) => ({
     }
 });
 
+const exibirOverflow= () => ({
+    type: EXIBIR_OVERFLOW,
+    payload: {
+        msg: MSG_OVERFLOW
+    }
+});
+
+const esconderOverflow= atual => ({
+    type: ESCONDER_OVERFLOW,
+    payload: {
+        atual
+    }
+});
+
 export const clicarNumericoAction= elemento => {
     return (dispatch, getState) => {
-        const {atual, acumulado}= funcaoClicarNumerico(elemento, getState().calculadoraReducer);
-        dispatch(clicarNumerico(atual, acumulado));
+
+        const atual= getState().calculadoraReducer.atual;
+        if(atual !== MSG_OVERFLOW){
+            if(atual.length === 22){
+                dispatch(exibirOverflow());
+            
+                setTimeout(() => dispatch(esconderOverflow(atual))
+                    , 1000);
+            }else{
+                const {atual, acumulado}= funcaoClicarNumerico(elemento, getState().calculadoraReducer);
+                dispatch(clicarNumerico(atual, acumulado));
+            }
+        }
     };
 };
 
