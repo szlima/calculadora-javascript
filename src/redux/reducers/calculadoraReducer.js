@@ -1,5 +1,5 @@
 import {
-    CLICAR_NUMERICO, EXIBIR_OVERFLOW, ESCONDER_OVERFLOW
+    CLICAR_CLEAR, CLICAR_NUMERICO, EXIBIR_OVERFLOW, ESCONDER_OVERFLOW
 } from '../actions/actionTypes';
 
 const estadoInicial= {
@@ -10,6 +10,11 @@ const estadoInicial= {
 export default function calculadoraReducer(state=estadoInicial, action){
   
     switch(action.type){
+
+        case CLICAR_CLEAR:
+            return {
+                ...estadoInicial
+            };
         
         case CLICAR_NUMERICO:
             return {

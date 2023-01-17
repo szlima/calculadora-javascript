@@ -9,9 +9,18 @@ import {
 
 const MSG_OVERFLOW= 'DIGIT LIMIT MET';
 
-export const clicarClearAction= () => ({
+const clicarClear= () => ({
     type: CLICAR_CLEAR
 });
+
+export const clicarClearAction= () => {
+    return (dispatch, getState) => {
+
+        const atual= getState().calculadoraReducer.atual;
+        if(atual !== MSG_OVERFLOW)
+            dispatch(clicarClear());
+    };
+};
 
 const clicarNumerico= (atual, acumulado) => ({ 
     type: CLICAR_NUMERICO,
