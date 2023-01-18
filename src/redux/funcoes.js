@@ -1,13 +1,13 @@
 export const funcaoClicarNumerico= (elemento, {atual, acumulado}) => {
     
-    let _atual= atual,
+    let _atual= /[x/+-]/.test(atual) ? '' : atual,
         _acumulado= acumulado;
     
     switch(elemento){
         case '.':
             if(!_atual.includes('.')){
-                _acumulado= (_acumulado === '') ? '0' + elemento : _acumulado + elemento;
-                _atual= (_atual === '') ? '0' + elemento : _atual + elemento;
+                _acumulado= (/[0-9]$/.test(_acumulado)) ? _acumulado + elemento : _acumulado + '0' + elemento;
+                _atual= (/[0-9]$/.test(_atual)) ? _atual + elemento : _atual + '0' + elemento ;
             }        
             break;
             
@@ -32,4 +32,34 @@ export const funcaoClicarNumerico= (elemento, {atual, acumulado}) => {
     
     return {atual: _atual, acumulado: _acumulado};
 };
+
+export const funcaoClicarOperacao= (operacao, {atual, acumulado}) => { 
   
+    let _atual= atual === 0 ? '' : atual, 
+        _acumulado= acumulado;  
+    
+    switch(operacao){
+        case '-':
+            if(_acumulado==='' || /[0-9.]$|[0-9.][x/+-]$/.test(_acumulado)){
+                _acumulado+= operacao; 
+                _atual= operacao;
+            }else if(/^[x/+-]$/.test(_acumulado)){
+                _acumulado= operacao;
+                _atual= operacao;
+            }
+            break;
+  
+        default:
+            if(!_atual.includes(operacao)){
+                if(/^[x/+-]$|[0-9.][x/+-]$/.test(_acumulado))
+                    _acumulado= _acumulado.substring(0, _acumulado.length-1) + operacao; 
+                else if(/[x/+-][-]$/.test(_acumulado))
+                    _acumulado= _acumulado.substring(0, _acumulado.length-2) + operacao; 
+                else
+                    _acumulado+= operacao; 
+                _atual= operacao;
+            }      
+    }
+
+    return {atual: _atual, acumulado: _acumulado};
+};

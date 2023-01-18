@@ -1,5 +1,6 @@
 import {
-    CLICAR_CLEAR, CLICAR_NUMERICO, EXIBIR_OVERFLOW, ESCONDER_OVERFLOW
+    CLICAR_CLEAR, CLICAR_NUMERICO, CLICAR_OPERACAO, 
+    EXIBIR_OVERFLOW, ESCONDER_OVERFLOW
 } from '../actions/actionTypes';
 
 const estadoInicial= {
@@ -33,6 +34,13 @@ export default function calculadoraReducer(state=estadoInicial, action){
             return {
                 ...state,
                 atual: action.payload.atual
+            };
+
+        case CLICAR_OPERACAO:
+            return {
+                ...state,
+                atual: action.payload.atual,
+                acumulado: action.payload.acumulado
             };
 
         default:
