@@ -2,10 +2,11 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import {
-    clicarNumericoAction, clicarClearAction, clicarOperacaoAction
+    clicarNumericoAction, clicarClearAction, 
+    clicarOperacaoAction, clicarResultadoAction
 } from '../redux/actions/actionCreators';
 
-function Botoes({clicarNumerico, clicarClear, clicarOperacao}){
+function Botoes({clicarNumerico, clicarClear, clicarOperacao, clicarResultado}){
     
     return (
         <div id='botoes'>
@@ -29,7 +30,7 @@ function Botoes({clicarNumerico, clicarClear, clicarOperacao}){
             
             <button id='zero' className='numerico' onClick={() => clicarNumerico('0')}>0</button>
             <button id='decimal' className='numerico' onClick={() => clicarNumerico('.')}>.</button>      
-            <button id='equals'>=</button>
+            <button id='equals' onClick={clicarResultado}>=</button>
         
         </div>
     );
@@ -38,7 +39,8 @@ function Botoes({clicarNumerico, clicarClear, clicarOperacao}){
 const mapDispatchToProps= dispatch => ({
     clicarNumerico: elemento => dispatch(clicarNumericoAction(elemento)),
     clicarClear: () => dispatch(clicarClearAction()), 
-    clicarOperacao: operacao => dispatch(clicarOperacaoAction(operacao))
+    clicarOperacao: operacao => dispatch(clicarOperacaoAction(operacao)),
+    clicarResultado: () => dispatch(clicarResultadoAction())
 });
   
 export default connect(null, mapDispatchToProps)(Botoes);

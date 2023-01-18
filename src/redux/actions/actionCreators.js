@@ -5,7 +5,8 @@ import {
 
 import {
     funcaoClicarNumerico,
-    funcaoClicarOperacao
+    funcaoClicarOperacao,
+    funcaoClicarResultado
 } from '../funcoes';
 
 const MSG_OVERFLOW= 'DIGIT LIMIT MET';
@@ -82,6 +83,21 @@ export const clicarOperacaoAction= operacao => {
     };
 };
 
-export const clicarResultadoAction= () => ({
-    type: CLICAR_RESULTADO
+const clicarResultado= (atual, acumulado) => ({
+    type: CLICAR_RESULTADO,
+    payload: {
+        atual, 
+        acumulado
+    }
 });
+
+export const clicarResultadoAction= () => {
+    return (dispatch, getState) => {
+
+        const atual= getState().calculadoraReducer.atual;
+        if(atual !== MSG_OVERFLOW){
+            const {atual, acumulado}= funcaoClicarResultado(getState().calculadoraReducer.acumulado);
+            dispatch(clicarResultado(atual, acumulado));
+        }
+    };
+};
